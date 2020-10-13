@@ -1,10 +1,21 @@
+const {
+	FB_API_KEY,
+	FB_APP_ID,
+	FB_AUTH_DOMAIN,
+	FB_DATABASE_URL,
+	FB_MEASUREMENT_ID,
+	FB_MESSAGING_SENDER_ID,
+	FB_PROJECT_ID,
+	FB_STORAGE_BUCKET,
+} = process.env
+
 export const firebaseConfig = {
-	apiKey: "AIzaSyAd4fnYJmLUTuZO2g8od-U5E8lXgzYG3uk",
-	authDomain: "mini-facebook-3927e.firebaseapp.com",
-	databaseURL: "https://mini-facebook-3927e.firebaseio.com",
-	projectId: "mini-facebook-3927e",
-	storageBucket: "mini-facebook-3927e.appspot.com",
-	messagingSenderId: "181678308377",
-	appId: "1:181678308377:web:bdd23a94698d90f7183e88",
-	measurementId: "G-B9S34N4BQY",
+	apiKey: FB_API_KEY,
+	authDomain: FB_AUTH_DOMAIN,
+	databaseURL: FB_DATABASE_URL,
+	projectId: FB_PROJECT_ID,
+	storageBucket: FB_STORAGE_BUCKET,
+	messagingSenderId: FB_MESSAGING_SENDER_ID,
+	appId: FB_APP_ID,
+	measurementId: FB_MEASUREMENT_ID,
 }

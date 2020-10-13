@@ -1,10 +1,4 @@
-import {
-	Card,
-	CardActionArea,
-	CardActions,
-	CardContent,
-	CardHeader,
-} from "@material-ui/core"
+import {Card, CardActions, CardContent, CardHeader} from "@material-ui/core"
 import React, {FunctionComponent} from "react"
 import useSWR from "swr"
 import {fetcher} from "../../http/fetcher"
