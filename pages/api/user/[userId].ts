@@ -1,27 +1,20 @@
-import {NextApiHandler} from "next"
-import {db} from "../../../src/firebase"
+import {NextApiRequest, NextApiResponse} from "next"
+import {router} from "../../../src/http/Router"
+// import {UserService} from "../../../src/user/service/user.service"
+import {UserStub} from "../../../stub/user/user.stub"
 
-const getAllPostsHandler: NextApiHandler = async (req, res) => {
-	try {
-		const {userId} = req.query
-		const userSnapshot = await db.doc(`users/${userId}`).get()
-
-		if (!userSnapshot.exists) {
-			throw new Error("User Does not Exists.")
-		}
-
-		return res.json({
-			ok: true,
-			data: userSnapshot.data(),
-			error: null,
-		})
-	} catch (err) {
-		return res.json({
-			ok: false,
-			data: null,
-			error: err,
-		})
-	}
-}
-
-export default getAllPostsHandler
+export default router.get(async function (
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
+	const {userId} = req.query
+	// todo: DI for userService
+	// const userService = new UserService()
+	const userService = new UserStub()
+	const user = await userService.getUser(userId as string)
+	return res.json({
+		ok: true,
+		data: user,
+		error: null,
+	})
+})
