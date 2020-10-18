@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from "react"
 import {Container, makeStyles} from "@material-ui/core"
-import Navbar from "./Navbar"
+import Navbar from "./components/Navbar"
 
 const useStyles = makeStyles((theme) => ({
 	offset: theme.mixins.toolbar,
