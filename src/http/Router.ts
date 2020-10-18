@@ -22,6 +22,7 @@ export class Router {
 				}
 				await handler(req, res)
 			} catch (err) {
+				console.error(err)
 				return res.json({ok: false, data: null, error: err})
 			}
 		}
@@ -42,6 +43,7 @@ export class Router {
 				}
 				await handler(req, res)
 			} catch (err) {
+				console.error(err)
 				return res.json({ok: false, data: null, error: err})
 			}
 		}

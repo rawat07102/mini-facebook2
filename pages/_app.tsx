@@ -3,6 +3,8 @@ import {NextPage} from "next"
 import Head from "next/head"
 
 import CssBaseline from "@material-ui/core/CssBaseline"
+import theme from "../src/Layout/theme"
+import {ThemeProvider} from "@material-ui/core"
 
 type Props = {
 	Component: NextPage
@@ -27,10 +29,10 @@ export default function MyApp(props: Props) {
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 			</Head>
-			{/* <ThemeProvider theme={defaultTheme}> */}
-			<CssBaseline />
-			<Component {...pageProps} />
-			{/* </ThemeProvider> */}
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<Component {...pageProps} />
+			</ThemeProvider>
 		</React.Fragment>
 	)
 }

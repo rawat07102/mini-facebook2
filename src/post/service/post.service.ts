@@ -21,8 +21,7 @@ export class PostService {
 		const postsSnapshot = await this.postDB.limit(limit).get()
 		const posts: PostDTO[] = []
 		postsSnapshot.docs.forEach((doc) => {
-			const {id, data} = doc
-			posts.push(new PostDTO(id, data))
+			posts.push(new PostDTO(doc.id, doc.data()))
 		})
 		return posts
 	}
@@ -35,7 +34,7 @@ export class PostService {
 				`/post/${postId}`
 			)
 		}
-		const post = new PostDTO(id, data)
+		const post = new PostDTO(id, data()!)
 		return post
 	}
 

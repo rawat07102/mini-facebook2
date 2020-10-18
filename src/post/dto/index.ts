@@ -9,8 +9,8 @@ export class PostDTO {
 	public likeCount: number
 	public commentCount: number
 
-	constructor(id: string, data: () => PostDoc | undefined) {
-		const {username, body, createdAt, commentCount, likeCount} = data()!
+	constructor(id: string, data: PostDoc) {
+		const {username, body, createdAt, commentCount, likeCount} = data
 		this.id = id
 		this.username = username
 		this.body = body

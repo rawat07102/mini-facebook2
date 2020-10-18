@@ -9,8 +9,8 @@ export class UserDTO {
 	public friends: string[]
 	public posts: PostDTO["id"][]
 
-	constructor(username: string, data: () => UserDoc | undefined) {
-		const {email, createdAt, friendReqs, friends, posts} = data()!
+	constructor(username: string, data: UserDoc) {
+		const {email, createdAt, friendReqs, friends, posts} = data
 		this.username = username
 		this.email = email
 		this.createdAt = createdAt

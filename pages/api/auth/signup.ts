@@ -1,4 +1,4 @@
-import {NextApiHandler, NextApiRequest, NextApiResponse} from "next"
+import {NextApiRequest, NextApiResponse} from "next"
 import {router} from "../../../src/http/Router"
 
 export default router.post(async function (

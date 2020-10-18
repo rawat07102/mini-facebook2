@@ -4,6 +4,5 @@ export async function fetcher(key: string, init?: RequestInit) {
 	if (!ok) {
 		throw error
 	}
-	console.log(data, "res")
 	return data
 }

@@ -18,16 +18,16 @@ export class UserService {
 	constructor() {}
 
 	async getUser(username: string) {
-		const {data, id, exists} = await this.userDB.doc(username).get()
+		const userSnapshot = await this.userDB.doc(username).get()
 
-		if (!exists) {
+		if (!userSnapshot.exists) {
 			throw new BadRequestException(
 				`user with given username ${username} does not exist.`,
 				`/user/${username}`
 			)
 		}
 
-		const user = new UserDTO(id, data)
+		const user = new UserDTO(userSnapshot.id, userSnapshot.data()!)
 		return user
 	}
 }
