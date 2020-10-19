@@ -5,21 +5,35 @@ import {
 	Card,
 	CardActions,
 	CardContent,
-	CardHeader,
 	makeStyles,
 	IconButton,
 	Typography,
 } from "@material-ui/core"
-import {Favorite as FavoriteIcon} from "@material-ui/icons"
+import {Comment, Favorite as FavoriteIcon, Toys} from "@material-ui/icons"
 
 import {fetcher} from "../../../http/fetcher"
 import {UserDTO} from "../../../user/dto"
 import {PostDTO} from "../../dto"
 
 const useStyles = makeStyles((theme) => ({
-	cardActions: {
+	root: {},
+	content: {
+		padding: theme.spacing(1),
+	},
+	postBody: {
+		paddingLeft: theme.spacing(2),
+	},
+	iconButton: {
+		marginLeft: theme.spacing(4),
+	},
+	actionContainer: {
 		display: "flex",
-		justifyContent: "flex-end",
+		justifyContent: "space-between",
+		marginLeft: "auto",
+		maxWidth: theme.spacing(25),
+	},
+	actions: {
+		display: "flex",
 	},
 }))
 
@@ -37,14 +51,32 @@ const Post: FunctionComponent<Props> = ({post}) => {
 	if (error) return <h1>error {error.message}</h1>
 
 	return (
-		<Card>
-			<CardHeader title={user ? `@${user.username}` : "loading..."} />
-			<CardContent>{post.body}</CardContent>
-			<CardActions className={classes.cardActions}>
-				<IconButton size="small">
-					<FavoriteIcon style={{color: "grey"}} fontSize="small" />
-				</IconButton>
-				<Typography variant="subtitle1">{post.likeCount}</Typography>
+		<Card className={classes.root}>
+			<CardContent className={classes.content}>
+				<Typography variant="h6">
+					{user ? `@${user.username}` : "loading..."}
+				</Typography>
+				<Typography className={classes.postBody} variant="body1">
+					{post.body}
+				</Typography>
+			</CardContent>
+			<CardActions className={classes.actionContainer}>
+				<div className={classes.actions}>
+					<IconButton size="small">
+						<FavoriteIcon style={{color: "grey"}} />
+					</IconButton>
+					<Typography variant="subtitle1">
+						{post.likeCount}
+					</Typography>
+				</div>
+				<div className={classes.actions}>
+					<IconButton size="small">
+						<Comment style={{color: "grey"}}></Comment>
+					</IconButton>
+					<Typography variant="subtitle1">
+						{post.commentCount}
+					</Typography>
+				</div>
 			</CardActions>
 		</Card>
 	)

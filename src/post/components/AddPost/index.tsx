@@ -1,22 +1,26 @@
 import React, {ChangeEvent, FormEvent, useState} from "react"
-import {Button, TextField} from "@material-ui/core"
+import {Button, IconButton, TextField} from "@material-ui/core"
 import useSWR from "swr"
 import {fetcher} from "../../../http/fetcher"
 import {PostDTO} from "../../dto"
+import useStyles from "./styles"
+import {PostAdd, PublicSharp, Publish} from "@material-ui/icons"
 
 const AddPost = () => {
 	const [post, setPost] = useState("")
 	const {data, mutate} = useSWR("posts", fetcher)
+	const classes = useStyles()
 
 	const handlSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		if (!post) return alert("no value for post")
 		mutate(
 			[
 				...data,
-				new PostDTO(`${Math.random()}`, () => ({
+				new PostDTO(`${Math.random()}`, {
 					body: post,
 					username: "test",
-				})),
+				}),
 			],
 			false
 		)
@@ -34,15 +38,21 @@ const AddPost = () => {
 	}
 
 	return (
-		<form onSubmit={handlSubmit}>
+		<form className={classes.root} onSubmit={handlSubmit}>
 			<TextField
+				fullWidth
 				value={post}
 				multiline
-				rows={3}
+				rows={2}
 				rowsMax={5}
 				onChange={handleChange}
 			/>
-			<Button type="submit" title="Post">
+			<Button
+				className={classes.button}
+				endIcon={<Publish />}
+				type="submit"
+				variant="contained"
+				title="Post">
 				Post
 			</Button>
 		</form>
