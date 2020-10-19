@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
 	},
 	listItem: {
 		color: "grey",
-		"&:hover": {
+		"&:hover, &:focus": {
 			color: theme.palette.primary.main,
 		},
 	},

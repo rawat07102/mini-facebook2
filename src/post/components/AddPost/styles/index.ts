@@ -10,5 +10,8 @@ export default makeStyles((theme) => ({
 	},
 	button: {
 		marginTop: theme.spacing(1),
+		"&:hover, &:focus": {
+			color: theme.palette.primary.main,
+		},
 	},
 }))

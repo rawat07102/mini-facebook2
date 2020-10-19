@@ -4,7 +4,7 @@ import useSWR from "swr"
 import {fetcher} from "../../../http/fetcher"
 import {PostDTO} from "../../dto"
 import useStyles from "./styles"
-import {PostAdd, PublicSharp, Publish} from "@material-ui/icons"
+import {Publish} from "@material-ui/icons"
 
 const AddPost = () => {
 	const [post, setPost] = useState("")
