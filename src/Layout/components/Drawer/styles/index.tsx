@@ -6,7 +6,14 @@ export default makeStyles((theme) => ({
 	drawerPaper: {
 		width: theme.spacing(7),
 	},
-	listIcon: {},
-	listItem: {},
+	listIcon: {
+		color: "inherit",
+	},
+	listItem: {
+		color: "grey",
+		"&:hover": {
+			color: theme.palette.primary.main,
+		},
+	},
 	offset: theme.mixins.toolbar,
 }))
